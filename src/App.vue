@@ -9,20 +9,8 @@
                     <!-- Mail -->
                     <!-- Password -->
                     <!-- Store Data? Yes/No -->
-                    <div class="form-group">
-                        <label for="firstName">First Name</label>
-                        <input type="text"
-                                id="firstName"
-                                class="form-control"
-                                v-model="userData.firstName">
-                    </div>
-                     <div class="form-group">
-                        <label for="lastName">Last Name</label>
-                        <input type="text"
-                                id="lastName"
-                                class="form-control"
-                                v-model="userData.lastName">
-                    </div>
+                    <app-full-name v-model="userData.fullName"></app-full-name>
+
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input type="email"
@@ -73,7 +61,7 @@
                         <h4>Your Data</h4>
                     </div>
                     <div class="panel-body">
-                        <p>Full Name: {{ userData.firstName }} {{ userData.lastName }}</p>
+                        <p>Full Name: {{ userData.fullName }}</p>
                         <p>Mail: {{ userData.email }}</p>
                         <p>Password: {{ userData.password }}</p>
                         <p>Store in Database?: {{ storeData }}</p>
@@ -85,12 +73,13 @@
 </template>
 
 <script>
+    import FullName from './FullName.vue';
+
     export default {
         data(){
             return {
                 userData: {
-                    firstName: '',
-                    lastName: '',
+                    fullName: 'Steve Smith',
                     eamail: '',
                     password: '',
                 },
@@ -102,6 +91,9 @@
             submitted(){
                 this.isSubmitted = true;
             }
+        },
+        components: {
+            appFullName: FullName
         }
     }
 </script>
